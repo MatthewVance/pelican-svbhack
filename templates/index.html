@@ -3,8 +3,16 @@
 {% for article in articles_page.object_list %}
 <article>
   <div class="article_title">
-    <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+    <h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Posted on: {{ article.locale_date }}</p>
+  </div>
+  {% if article.readtime %}
+  <div class="article_readtime">
+    <p>Estimated read time: {{article.readtime.minutes}} minutes</p>
+  </div>
+  {% endif %}
   <div class="article_text">
     {{ article.summary }}
   </div>
